@@ -1,4 +1,4 @@
-JWaitIndicator
+jWaitIndicator
 ==============
 
 WaitIndicator for Lazy loading
@@ -18,21 +18,9 @@ Initialization and WaitIndicator Method Call
 ```
  $("button").click(function(){
   options={
-            // These are the defaults.
-            display: "none",
-            position: "fixed",
-            zindex: "1000",
-            top: "0",
-            left: "0",
-            height: "100%",
-            width: "100%",
-            backgroundColor: "rgba( 255, 255, 255, .8 )",
             waitIndicatorImage: "url('../Images/pg.gif')",
-            backgroundRepeat: "no-repeat",
-            backgroundPosX: "50%",
-            backgroundPosY: "50%"
-        };
-   $("#dvgds").WaitIndicatorStart(options);
+          };
+   $("#dvgds").jWaitIndicatorStart(options);
  });
  ```
  
@@ -47,10 +35,10 @@ Calling waitIndicator on ajax call
     contentType: "application/json; charset=utf-8",
     async: true,
     beforeSend: function () {
-       $("#dvgds").WaitIndicatorStart(options);
+       $("#dvgds").jWaitIndicatorStart(options);
     },
     complete: function () {
-       $("#dvgds").WaitIndicatorEnd(options);
+       $("#dvgds").jWaitIndicatorEnd(options);
     },
     success: function (result) {
     },
