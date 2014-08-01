@@ -12,8 +12,7 @@ Jquery(Any version)
 
 Initialization
 ===============================
-
- $(document).ready(function () {
+$(document).ready(function () {
     options={
             // These are the defaults.
             display: "none",
@@ -32,17 +31,18 @@ Initialization
     $.InitializeWaitIndicator(options);
  });
  
+ 
  Call when you submit action
  ===============================
- 
  $("button").click(function(){
  $.InitializeWaitIndicator.Start();
  });
  
+ 
  Calling waitIndicator on ajax call
  ==================================
  $.ajax({
-    url: "you method to call",    //From Home Control
+    url: "method to call",
     type: "post",
     data: "your data to post",
     dataType: "json",
