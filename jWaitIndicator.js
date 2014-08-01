@@ -1,5 +1,5 @@
 /*
- *JWaitIndicator 1.0 - WaitIndicator for Lazy loading
+ *jWaitIndicator 1.0 - WaitIndicator for Lazy loading
  * 
  * http://hackme.co.vu
  *
