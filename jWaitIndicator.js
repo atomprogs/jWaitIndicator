@@ -11,7 +11,9 @@
  */
 
 (function ($) {
-  $.fn.WaitIndicatorStart = function (options) {
+    // Initialize waitindicatorcounter
+    var waitindicatorcounter = 0;
+    $.fn.jWaitIndicatorStart = function (options) {
 
         // This is the easiest way to have default options.
         var settings = $.extend({
@@ -31,37 +33,46 @@
         }, options);
 
         // Initialize and start WaitIndicator
-        if ($(this).attr("id") == undefined)
-            $(this).attr("id", "_WaitIndicator");
-        $("body").append("<div class='_WaitIndicator' WaitIndicatorAssociatedWith='" + $(this).attr("id") + "' ></div>")
-        $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').css({
-            display: settings.display,
-            position: $(this).is("body")?"fixed":settings.position,
-            "z-index": settings.zindex,
-            top: $(this).is("body") ? 0 : $(this).offset().top + 15,
-            left: $(this).is("body") ? 0 : $(this).offset().left + 7,
-            height: $(this).is("body") ? $(this).height() : $(this).height() - 10,
-            width: $(this).is("body") ? $(this).width() : $(this).width() - 10,
-            "background-image": settings.waitIndicatorImage,
-            "background-color": settings.backgroundColor,
-            "background-position-x": settings.backgroundPosX,
-            "background-position-y": settings.backgroundPosY,
-            "background-repeat": settings.backgroundRepeat
-        }).show();
-
+       
+        this.each(function (e) {
+            if ($(this).attr("id") == undefined)
+                $(this).attr("id", "_WaitIndicator" + waitindicatorcounter);
+            if ($('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').length > 0)
+                $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').remove();
+            $("body").append("<div class='_WaitIndicator' WaitIndicatorAssociatedWith='" + $(this).attr("id") + "' ></div>")
+            $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').css({
+                display: settings.display,
+                position: $(this).is("body") ? "fixed" : settings.position,
+                "z-index": settings.zindex,
+                top: $(this).is("body") ? 0 : $(this).offset().top + 15,
+                left: $(this).is("body") ? 0 : $(this).offset().left + 7,
+                height: $(this).is("body") ? "100%" : $(this).height() - 10,
+                width: $(this).is("body") ? "100%" : $(this).width() - 10,
+                "background-image": settings.waitIndicatorImage,
+                "background-color": settings.backgroundColor,
+                "background-position-x": settings.backgroundPosX,
+                "background-position-y": settings.backgroundPosY,
+                "background-repeat": settings.backgroundRepeat
+            }).show();
+            waitindicatorcounter++;
+        });
 
 
     };
     //hide waitindicator
-    $.fn.WaitIndicatorEnd = function () {
-        $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').hide();
+    $.fn.jWaitIndicatorEnd = function () {
+        this.each(function (e) {
+            $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').hide();
+        });
     };
     //destroy waitindicator
-    $.fn.WaitIndicatorDestroy = function () {
-        $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').remove();
+    $.fn.jWaitIndicatorDestroy = function () {
+        this.each(function (e) {
+            $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').remove();
+        });
     };
     //destroy all waitindicator
-    $.fn.WaitIndicatorDestroyAll = function () {
+    $.fn.jWaitIndicatorDestroyAll = function () {
         $('._WaitIndicator').remove();
     };
 }(jQuery));
