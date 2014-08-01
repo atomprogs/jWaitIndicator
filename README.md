@@ -12,6 +12,8 @@ Jquery(Any version)
 
 Initialization
 ===============================
+
+```
 $(document).ready(function () {
     options={
             // These are the defaults.
@@ -30,17 +32,20 @@ $(document).ready(function () {
         };
     $.InitializeWaitIndicator(options);
  });
+ ```
+
  
-=============================== 
- Call when you submit action
- ===============================
+Call when you submit action
+===============================
+```
  $("button").click(function(){
  $.InitializeWaitIndicator.Start();
  });
+ ```
  
- 
- Calling waitIndicator on ajax call
- ==================================
+Calling waitIndicator on ajax call
+===============================
+```
  $.ajax({
     url: "method to call",
     type: "post",
@@ -60,3 +65,5 @@ $(document).ready(function () {
 
     }
 });
+```
+
