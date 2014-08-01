@@ -10,12 +10,12 @@ Dependency
 ===============================
 Jquery(Any version)
 
-Initialization
+ 
+Initialization and WaitIndicator Method Call
 ===============================
-
 ```
-$(document).ready(function () {
-    options={
+ $("button").click(function(){
+  options={
             // These are the defaults.
             display: "none",
             position: "fixed",
@@ -30,16 +30,7 @@ $(document).ready(function () {
             backgroundPosX: "50%",
             backgroundPosY: "50%"
         };
-    $.InitializeWaitIndicator(options);
- });
- ```
-
- 
-Call when you submit action
-===============================
-```
- $("button").click(function(){
- $.InitializeWaitIndicator.Start();
+   $("#dvgds").WaitIndicatorStart(options);
  });
  ```
  
@@ -54,10 +45,10 @@ Calling waitIndicator on ajax call
     contentType: "application/json; charset=utf-8",
     async: true,
     beforeSend: function () {
-        $.InitializeWaitIndicator.Start();
+       $("#dvgds").WaitIndicatorStart(options);
     },
     complete: function () {
-        $.InitializeWaitIndicator.End();
+       $("#dvgds").WaitIndicatorEnd(options);
     },
     success: function (result) {
     },
