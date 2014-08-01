@@ -13,7 +13,7 @@ Jquery(Any version)
  
 Initialization and WaitIndicator Method Call
 ===============================
-`<script src="Scripts/jquery-1.8.2.min.js"></script>`
+`<script src="Scripts/jquery-1.8.2.min.js"></script>`<br>
 `<script src="Scripts/jWaitIndicator.js"></script>`
 ```
  $("button").click(function(){
