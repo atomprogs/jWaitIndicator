@@ -31,7 +31,7 @@ $(document).ready(function () {
     $.InitializeWaitIndicator(options);
  });
  
- 
+=============================== 
  Call when you submit action
  ===============================
  $("button").click(function(){
