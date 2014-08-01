@@ -11,8 +11,7 @@
  */
 
 (function ($) {
-
-    $.fn.WaitIndicatorStart = function (options) {
+  $.fn.WaitIndicatorStart = function (options) {
 
         // This is the easiest way to have default options.
         var settings = $.extend({
@@ -32,15 +31,17 @@
         }, options);
 
         // Initialize and start WaitIndicator
+        if ($(this).attr("id") == undefined)
+            $(this).attr("id", "_WaitIndicator");
         $("body").append("<div class='_WaitIndicator' WaitIndicatorAssociatedWith='" + $(this).attr("id") + "' ></div>")
         $('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').css({
             display: settings.display,
-            position: settings.position,
+            position: $(this).is("body")?"fixed":settings.position,
             "z-index": settings.zindex,
-            top: $(this).offset().top + 15,
-            left: $(this).offset().left + 7,
-            height: $(this).height() - 10,
-            width: $(this).width() - 10,
+            top: $(this).is("body") ? 0 : $(this).offset().top + 15,
+            left: $(this).is("body") ? 0 : $(this).offset().left + 7,
+            height: $(this).is("body") ? $(this).height() : $(this).height() - 10,
+            width: $(this).is("body") ? $(this).width() : $(this).width() - 10,
             "background-image": settings.waitIndicatorImage,
             "background-color": settings.backgroundColor,
             "background-position-x": settings.backgroundPosX,
