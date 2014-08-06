@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link href="../css/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+       
+        <button id="gds">Start Waitindicator</button>
+		 <button id="gds3">Change Waitindicator</button>
+        <button id="gds1">End Waitindicator</button>
+        <button id="gds2">Destroy Waitindicator</button>
+    </div>
+    <div class="dvgds" style="margin: 50px auto; width: 40%; height:200px; border: 1px red solid;">
+
+    </div>
+    <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px green solid; ">
+
+    </div>
+    <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px black solid; ">
+
+    </div>
+    <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px yellow solid; ">
+
+    </div>
+    <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; background-color: orange; border: 1px pink solid; ">
+
+    </div>
+    <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px orange solid; ">
+
+    </div>
+   
+    <script src="../js/jquery-1.8.2.min.js"></script>
+    <script src="../js/jWaitIndicator.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           
+            $("#gds1").click(function () {
+                 $(".dvgds").jWaitIndicatorEnd();
+            });
+            $("#gds2").click(function () {
+                $(".dvgds").jWaitIndicatorDestroy();
+            });
+          
+            $("#gds").click(function () {
+              $(".dvgds").jWaitIndicatorStart();
+               
+            });
+			 $("#gds3").click(function () {
+                var options = { waitIndicatorImage: "url('../Images/pg1.gif')" }
+                $(".dvgds").jWaitIndicatorStart(options);
+            });
+        });
+    </script>
+
+</body>
+</html>
