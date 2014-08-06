@@ -9,7 +9,6 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *
  */
-
 (function ($, window, document, undefined) {
     // Initialize waitindicatorcounter
     var waitindicatorcounter = 0;
