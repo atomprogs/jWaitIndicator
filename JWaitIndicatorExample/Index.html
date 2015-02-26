@@ -48,11 +48,13 @@
             });
           
             $("#gds").click(function () {
+              var options = { waitIndicatorImage: "../Images/pg.gif" };
               $(".dvgds").jWaitIndicatorStart();
                
             });
-			 $("#gds3").click(function () {
-                var options = { waitIndicatorImage: "Images/pg1.gif" }
+            $("#gds3").click(function () {
+            	$(".dvgds").jWaitIndicatorDestroy();
+                var options = { waitIndicatorImage: "../Images/pg1.gif" }
                 $(".dvgds").jWaitIndicatorStart(options);
             });
         });
