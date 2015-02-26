@@ -48,8 +48,9 @@
             });
           
             $("#gds").click(function () {
+              $(".dvgds").jWaitIndicatorDestroy();
               var options = { waitIndicatorImage: "../Images/pg.gif" };
-              $(".dvgds").jWaitIndicatorStart();
+              $(".dvgds").jWaitIndicatorStart(options);
                
             });
             $("#gds3").click(function () {
