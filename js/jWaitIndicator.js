@@ -1,6 +1,6 @@
 /*
  *jWaitIndicator 1.0 - WaitIndicator for Lazy loading
- * 
+ *
  * http://hackme.co.vu
  *
  * Copyright (c) 2014 Rajeev Ranjan
@@ -13,7 +13,6 @@
     // Initialize waitindicatorcounter
     var waitindicatorcounter = 0;
     $.fn.jWaitIndicatorStart = function (options) {
-
         // This is the easiest way to have default options.
         var settings = $.extend({
             // These are the defaults.
@@ -25,10 +24,11 @@
             height: "100%",
             width: "100%",
             backgroundColor: "rgba( 255, 255, 255, .8 )",
-            waitIndicatorImage: "url('../Images/pg.gif')",
-            backgroundRepeat: "no-repeat",
-            backgroundPosX: "50%",
-            backgroundPosY: "50%"
+            waitIndicatorImage: "../Images/pg.gif",
+            ImageTopPos: 0,
+            ImageBottomPos: 0,
+            ImageLeftPos: 0,
+            ImageRightPos: 0
         }, options);
 
         // Initialize and start WaitIndicator
@@ -39,8 +39,13 @@
             if (eID.attr("id") == undefined)
                 eID.attr("id", "_WaitIndicator" + waitindicatorcounter);
             //Dont create if already present
-            if ($('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').length == 0)
-                $("body").append("<div class='_WaitIndicator' WaitIndicatorAssociatedWith='" + $(this).attr("id") + "' ></div>");
+            if ($('._WaitIndicator[WaitIndicatorAssociatedWith="' + $(this).attr("id") + '"]').length == 0) {
+                var divIndicatior = "<div class='_WaitIndicator' WaitIndicatorAssociatedWith='" + $(this).attr("id") + "' >";
+                divIndicatior += "<img  alt='Processing...' style='position: absolute; margin: auto;' />";
+                divIndicatior += "</div>";
+                $("body").append(divIndicatior);
+            }
+
             SetWaitIndicatorPos(eID);
             //Resdesign WaitIndicator
             $(window).resize(function () {
@@ -50,7 +55,9 @@
         });
 
         function SetWaitIndicatorPos(eID) {
-            $('._WaitIndicator[WaitIndicatorAssociatedWith="' + eID.attr("id") + '"]').css({
+            var currele = $('._WaitIndicator[WaitIndicatorAssociatedWith="' + eID.attr("id") + '"]');
+            currele.find("img").attr('src', settings.waitIndicatorImage).css({ top: settings.ImageTopPos, left: settings.ImageLeftPos, right: settings.ImageRightPos, bottom: settings.ImageBottomPos });
+            currele.css({
                 display: settings.display,
                 position: eID.is("body") ? "fixed" : settings.position,
                 "z-index": settings.zindex,
@@ -58,11 +65,7 @@
                 left: eID.is("body") ? 0 : eID.offset().left + 7,
                 height: eID.is("body") ? "100%" : eID.height() - 10,
                 width: eID.is("body") ? "100%" : eID.width() - 10,
-                "background-image": settings.waitIndicatorImage,
-                "background-color": settings.backgroundColor,
-                "background-position-x": settings.backgroundPosX,
-                "background-position-y": settings.backgroundPosY,
-                "background-repeat": settings.backgroundRepeat
+                "background-color": settings.backgroundColor
             }).show();
         }
     };
@@ -83,4 +86,3 @@
         $('._WaitIndicator').remove();
     };
 }(jQuery, window, document));
-

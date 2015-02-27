@@ -10,56 +10,59 @@
 </head>
 <body>
     <div>
-       
+
         <button id="gds">Start Waitindicator</button>
-		 <button id="gds3">Change Waitindicator</button>
+        <button id="gds3">Change Waitindicator</button>
         <button id="gds1">End Waitindicator</button>
         <button id="gds2">Destroy Waitindicator</button>
     </div>
     <div class="dvgds" style="margin: 50px auto; width: 40%; height:200px; border: 1px red solid;">
-
     </div>
     <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px green solid; ">
-
     </div>
     <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px black solid; ">
-
     </div>
     <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px yellow solid; ">
-
     </div>
     <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; background-color: orange; border: 1px pink solid; ">
-
     </div>
     <div class="dvgds" style="margin: 50px auto; width: 40%; height: 200px; border: 1px orange solid; ">
-
     </div>
-   
+
     <script src="../js/jquery-1.8.2.min.js"></script>
-    <script src="../js/jWaitIndicator.min.js"></script>
+    <!--<script src="../js/jWaitIndicator.min.js"></script>-->
+    <script src="../js/jWaitIndicator.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-           
+
             $("#gds1").click(function () {
-                 $(".dvgds").jWaitIndicatorEnd();
+                $(".dvgds").jWaitIndicatorEnd();
             });
             $("#gds2").click(function () {
                 $(".dvgds").jWaitIndicatorDestroy();
             });
-          
+
             $("#gds").click(function () {
-              $(".dvgds").jWaitIndicatorDestroy();
-              var options = { waitIndicatorImage: "../Images/pg.gif" };
-              $(".dvgds").jWaitIndicatorStart(options);
-               
+                var options = { waitIndicatorImage: "../Images/pg.gif" };
+                $(".dvgds").jWaitIndicatorStart(options);
+
             });
             $("#gds3").click(function () {
-            	$(".dvgds").jWaitIndicatorDestroy();
-                var options = { waitIndicatorImage: "../Images/pg1.gif" }
+                var options = {
+                    zindex: "99999999",
+                    top: "0",
+                    left: "0",
+                    height: "100%",
+                    width: "100%",
+                    backgroundColor: "grey",
+                    waitIndicatorImage: "../Images/pg1.gif", ImageTopPos: 50,
+                    ImageBottomPos: 0,
+                    ImageLeftPos: 0,
+                    ImageRightPos: 0
+                }
                 $(".dvgds").jWaitIndicatorStart(options);
             });
         });
     </script>
-
 </body>
 </html>
